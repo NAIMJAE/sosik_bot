@@ -1,6 +1,9 @@
 # Sosik_Bot
 > **Telegram Bot**을 이용한 가상화폐 거래소 이벤트 알림 봇
 
+<br/>
+![airdrop_alarm](https://github.com/user-attachments/assets/c138a08c-e4c9-4378-9488-1b69854589b4)
+
 ---
 
 ## 📌 개발 배경
