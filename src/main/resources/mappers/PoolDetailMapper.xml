@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sosikbot.mapper.PoolDetailMapper">
+    <insert id="insertLaunchPool" parameterType="com.sosikbot.entity.PoolDetail" useGeneratedKeys="true" keyProperty="poolNo">
+        INSERT INTO pooldetail (launchNo, name, total, minimum, maximum)
+        VALUES (#{launchNo}, #{name}, #{total}, #{minimum}, #{maximum})
+    </insert>
+
+    <select id="selectLaunchPool" parameterType="map" resultType="com.sosikbot.entity.PoolDetail">
+        SELECT *
+        FROM pooldetail
+        WHERE launchNo = #{launchNo}
+        AND name = #{name}
+    </select>
+
+    <select id="selectPoolDetailList" parameterType="map" resultType="com.sosikbot.entity.PoolDetail">
+        SELECT *
+        FROM pooldetail
+        WHERE launchNo = #{launchNo}
+    </select>
+</mapper>
