@@ -2,7 +2,8 @@
 > **Telegram Bot**을 이용한 가상화폐 거래소 이벤트 알림 봇
 
 <br/>
-![airdrop_alarm](https://github.com/user-attachments/assets/c138a08c-e4c9-4378-9488-1b69854589b4)
+
+![sosikbotmain](https://github.com/user-attachments/assets/837787ac-f237-44fa-9079-170d6b1f09bc)
 
 ---
 
