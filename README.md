@@ -30,6 +30,7 @@
 <br/>
 
 ![airdrop_alarm](https://github.com/user-attachments/assets/f99cf774-321f-42ab-b21b-3b54b7888667)
+![new_airdrop_alarm](https://github.com/user-attachments/assets/f7983d7a-b546-48b6-b186-98cc51355a0d)
 
 ### 2. **Bybit LaunchPool Event 알림 기능**
 - **Bybit LaunchPool 페이지**를 크롤링하여 새로운 LaunchPool 이벤트 생성 시 알림 전송
