@@ -36,6 +36,26 @@
 
 ---
 
+## 개발 과정
+### Test v0.0.1
+- Telegram Botfather를 이용한 Telegram Bot 생성
+- Telegram API 라이브러리 통한 Spring Boot 프로젝트 연결
+### Test v0.0.2
+- Selenium 라이브러리를 이용한 Bithumb 공지사항 페이지 크롤링
+- 크롤링 데이터 중 Airdrop Event 추출 후 DB 저장
+- Scheduled를 이용한 반복작업?을 통해 새로운 Airdrop Event 생성 시 알림 기능 추가
+- AWS 서버 배포
+### Test v0.0.3
+- 백그라운드 작업 중 크롬 프로세스가 종료되지 않는 에러 수정
+### Test v0.0.4
+- 매일 23시 45분 당일 참여 가능한 Airdrop Event 알림 기능 추가 
+### Test v0.0.5
+- Selenium 라이브러리를 이용한 Bybit 공지사항 페이지 크롤링
+- 크롤링 데이터 중 LaunchPool Event 추출 후 DB 저장
+- Scheduled를 이용한 반복작업?을 통해 새로운 LaunchPool Event 생성 시 알림 기능 추가
+
+---
+
 ## 🚀 추후 개발 목표
 - 다른 주요 가상화폐 거래소(예: Binance, Upbit) 이벤트 알림 기능 추가
 - 더 세부적인 크롤링과 데이터 분석 기능 도입
