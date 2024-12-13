@@ -36,23 +36,23 @@
 
 ---
 
-## 개발 과정
+## ⚙️ 개발 과정
 ### Test v0.0.1
 - Telegram Botfather를 이용한 Telegram Bot 생성
-- Telegram API 라이브러리 통한 Spring Boot 프로젝트 연결
+- Telegram API 라이브러리 통한 Spring Boot 프로젝트와 연결
 ### Test v0.0.2
-- Selenium 라이브러리를 이용한 Bithumb 공지사항 페이지 크롤링
-- 크롤링 데이터 중 Airdrop Event 추출 후 DB 저장
-- Scheduled를 이용한 반복작업?을 통해 새로운 Airdrop Event 생성 시 알림 기능 추가
-- AWS 서버 배포
+- Selenium 라이브러리를 이용한 Bithumb 공지사항 페이지 크롤링 구현
+- 크롤링 데이터 중 Airdrop Event 추출 후 DB에 저장
+- Scheduled 작업을 통해 새로운 Airdrop Event 생성 시 알림 기능 추가
+- AWS 서버에 프로젝트 배포
 ### Test v0.0.3
-- 백그라운드 작업 중 크롬 프로세스가 종료되지 않는 에러 수정
+- 백그라운드 작업 중 발생한 크롬 프로세스 종료되지 않는 문제 수정
 ### Test v0.0.4
 - 매일 23시 45분 당일 참여 가능한 Airdrop Event 알림 기능 추가 
 ### Test v0.0.5
-- Selenium 라이브러리를 이용한 Bybit 공지사항 페이지 크롤링
-- 크롤링 데이터 중 LaunchPool Event 추출 후 DB 저장
-- Scheduled를 이용한 반복작업?을 통해 새로운 LaunchPool Event 생성 시 알림 기능 추가
+- Selenium 라이브러리를 이용한 Bybit 공지사항 페이지 크롤링 구현
+- 크롤링 데이터 중 LaunchPool Event 추출 후 DB에 저장
+- Scheduled 작업을 통해 새로운 LaunchPool Event가 생성되면 알림 기능 추가
 
 ---
 
