@@ -26,7 +26,6 @@
 ### 1. **새로운 Bithumb Airdrop Event 알림 기능**
 - **Bithumb 공지사항 페이지**를 크롤링하여 새로운 Airdrop 이벤트 생성 시 알림 전송
 - 이벤트 참여 기간 동안 매일 **23시 45분**에 참여 알림 제공
-
 - Selenium 라이브러리를 이용한 Bithumb 공지사항 페이지 크롤링
 - 크롤링 데이터 중 Airdrop Event에 필요한 데이터만 추출 후 DB 저장
 - 스케줄링 작업을 통해 새로운 Airdrop Event 생성 시 알림 기능 구현
@@ -38,13 +37,12 @@
 
 ### 2. **Bybit LaunchPool Event 알림 기능**
 - **Bybit LaunchPool 페이지**를 크롤링하여 새로운 LaunchPool 이벤트 생성 시 알림 전송
-
 - Selenium 라이브러리를 이용한 Bybit 공지사항 페이지 크롤링
 - 크롤링 데이터 중 LaunchPool Event에 필요한 데이터만 추출 후 DB 저장
 - 스케줄링 작업을 통해 새로운 LaunchPool Event 생성 시 알림 기능 구현
 
 ### 3. **당일 참여 가능한 Airdrop Event 알림 기능**
-- 매일 23시 45분 DB 조회를 통해 당일 참여 가능한 Airdrop Event 알림 기느 구현
+- 매일 23시 45분 DB 조회를 통해 당일 참여 가능한 Airdrop Event 알림 기능 구현
 
 ### 4. **Bithumb Airdrop Event 예측 보상 알림 기능**
 - 매일 00시 보상 지급 예정인 Airdrop Event 예측 보상 알림 제공
