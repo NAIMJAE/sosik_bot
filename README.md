@@ -23,9 +23,13 @@
 ---
 
 ## ✅ 현재 구현 기능
-### 1. **Bithumb Airdrop Event 알림 기능**
+### 1. **새로운 Bithumb Airdrop Event 알림 기능**
 - **Bithumb 공지사항 페이지**를 크롤링하여 새로운 Airdrop 이벤트 생성 시 알림 전송
 - 이벤트 참여 기간 동안 매일 **23시 45분**에 참여 알림 제공
+
+Selenium 라이브러리를 이용한 Bithumb 공지사항 페이지 크롤링
+크롤링 데이터 중 Airdrop Event에 필요한 데이터만 추출 후 DB 저장
+스케줄링 작업을 통해 새로운 Airdrop Event 생성 시 알림 기능 구현
 
 <br/>
 
@@ -35,34 +39,33 @@
 ### 2. **Bybit LaunchPool Event 알림 기능**
 - **Bybit LaunchPool 페이지**를 크롤링하여 새로운 LaunchPool 이벤트 생성 시 알림 전송
 
-### 3. **Bithumb Airdrop Event 예측 보상 알림 기능**
+Selenium 라이브러리를 이용한 Bybit 공지사항 페이지 크롤링
+크롤링 데이터 중 LaunchPool Event에 필요한 데이터만 추출 후 DB 저장
+스케줄링 작업을 통해 새로운 LaunchPool Event 생성 시 알림 기능 구현
+
+### 3. **당일 참여 가능한 Airdrop Event 알림 기능**
+- 매일 23시 45분 DB 조회를 통해 당일 참여 가능한 Airdrop Event 알림 기느 구현
+
+### 4. **Bithumb Airdrop Event 예측 보상 알림 기능**
 - 매일 00시 보상 지급 예정인 Airdrop Event 예측 보상 알림 제공
 - Bithumb Open API를 통해 실시간 가상 화폐 가격 조회
 - 최근 Airdrop Event 평균 참가자 수를 통한 참가자 수 예측
 
-### 4. **Bithumb Airdrop Event 보상 월말 결산**
+### 5. **Bithumb Airdrop Event 보상 월말 결산**
 - 매월 1일 12시 직전월 Bithumb Airdrop Event 보상 결산 제공
 - Airdrop Event 보상 정보를 이미지로 제공
 
 ---
 
 ## ⚙️ 개발 과정
-### Test v0.0.1
-- Telegram Botfather를 이용한 Telegram Bot 생성
-- Telegram API 라이브러리 통한 Spring Boot 프로젝트와 연결
-### Test v0.0.2
-- Selenium 라이브러리를 이용한 Bithumb 공지사항 페이지 크롤링 구현
-- 크롤링 데이터 중 Airdrop Event 추출 후 DB에 저장
-- Scheduled 작업을 통해 새로운 Airdrop Event 생성 시 알림 기능 추가
-- AWS 서버에 프로젝트 배포
-### Test v0.0.3
-- 백그라운드 작업 중 발생한 크롬 프로세스 종료되지 않는 문제 수정
-### Test v0.0.4
-- 매일 23시 45분 당일 참여 가능한 Airdrop Event 알림 기능 추가 
-### Test v0.0.5
-- Selenium 라이브러리를 이용한 Bybit 공지사항 페이지 크롤링 구현
-- 크롤링 데이터 중 LaunchPool Event 추출 후 DB에 저장
-- Scheduled 작업을 통해 새로운 LaunchPool Event가 생성되면 알림 기능 추가
+### Test v0.0.1~5
+- .1) Telegram Botfather를 이용한 Telegram Bot 생성
+- .1) Telegram API 라이브러리 통한 Spring Boot 프로젝트와 연결
+- .2) 새로운 Bithumb Airdrop Event 알림 기능
+- .2) AWS 서버에 프로젝트 배포
+- .3) 백그라운드 작업 중 발생한 크롬 프로세스 종료되지 않는 문제 수정
+- .4) 당일 참여 가능한 Airdrop Event 알림 기능 추가 
+- .5) 새로운 Bybit LaunchPool Event 알림 기능
 
 ### Release v1.0.0
 - 매일 00시 보상 지급 예정인 Airdrop Event 예측 보상 알림 기능 추가
