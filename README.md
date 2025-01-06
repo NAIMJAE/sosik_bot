@@ -31,6 +31,8 @@
 
 ![new_airdrop_alarm](https://github.com/user-attachments/assets/5c574d0a-2f2d-41cc-9d12-d8592182871f)
 
+<br/>
+
 ### 2. **Bybit LaunchPool Event 알림 기능**
 - **Bybit LaunchPool 페이지**를 크롤링하여 새로운 LaunchPool 이벤트 생성 시 알림 전송
 - Selenium 라이브러리를 이용한 Bybit 공지사항 페이지 크롤링
@@ -41,12 +43,16 @@
 
 ![new_launchpool_alarm](https://github.com/user-attachments/assets/132e6350-b911-4b00-be5b-ab8ed58459b7)
 
+<br/>
+
 ### 3. **당일 참여 가능한 Airdrop Event 알림 기능**
 - 매일 23시 45분 DB 조회를 통해 당일 참여 가능한 Airdrop Event 알림 기능 구현
 
 <br/>
 
 ![airdrop_alarm](https://github.com/user-attachments/assets/49e20e95-f1bf-4e10-a0ed-11a681da80d3)
+
+<br/>
 
 ### 4. **Bithumb Airdrop Event 예측 보상 알림 기능**
 - 매일 00시 보상 지급 예정인 Airdrop Event 예측 보상 알림 제공
@@ -57,6 +63,8 @@
 
 ![estimated_airdrop_reward](https://github.com/user-attachments/assets/709bb372-a5f6-483f-a795-1631266f2491)
 
+<br/>
+
 ### 5. **Bithumb Airdrop Event 보상 월말 결산**
 - 매월 1일 12시 직전월 Bithumb Airdrop Event 보상 결산 제공
 - Airdrop Event 보상 정보를 이미지로 제공
@@ -65,6 +73,8 @@
 
 ![airdrop_reward_report](https://github.com/user-attachments/assets/c9cdd610-e821-43ed-92a8-611dcbc61ec7)
 ![airdrop_reward_report2](https://github.com/user-attachments/assets/5a672834-9e7c-43b6-848a-adcf07b2c5e8)
+
+<br/>
 
 ---
 
