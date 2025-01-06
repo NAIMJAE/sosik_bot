@@ -38,12 +38,14 @@
 - 스케줄링 작업을 통해 새로운 LaunchPool Event 생성 시 알림 기능 구현
 
 <br/>
+
 ![new_launchpool_alarm](https://github.com/user-attachments/assets/132e6350-b911-4b00-be5b-ab8ed58459b7)
 
 ### 3. **당일 참여 가능한 Airdrop Event 알림 기능**
 - 매일 23시 45분 DB 조회를 통해 당일 참여 가능한 Airdrop Event 알림 기능 구현
 
 <br/>
+
 ![airdrop_alarm](https://github.com/user-attachments/assets/49e20e95-f1bf-4e10-a0ed-11a681da80d3)
 
 ### 4. **Bithumb Airdrop Event 예측 보상 알림 기능**
@@ -52,6 +54,7 @@
 - 최근 Airdrop Event 평균 참가자 수를 통한 참가자 수 예측
 
 <br/>
+
 ![estimated_airdrop_reward](https://github.com/user-attachments/assets/709bb372-a5f6-483f-a795-1631266f2491)
 
 ### 5. **Bithumb Airdrop Event 보상 월말 결산**
@@ -59,6 +62,7 @@
 - Airdrop Event 보상 정보를 이미지로 제공
 
 <br/>
+
 ![airdrop_reward_report](https://github.com/user-attachments/assets/c9cdd610-e821-43ed-92a8-611dcbc61ec7)
 ![airdrop_reward_report2](https://github.com/user-attachments/assets/5a672834-9e7c-43b6-848a-adcf07b2c5e8)
 
