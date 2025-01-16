@@ -14,7 +14,6 @@
         FROM launchpool
         WHERE exchange = #{exchange}
         AND title = #{title}
-        AND startDate = #{startDate}
     </select>
 
     <select id="selectLaunchPoolInProgress" parameterType="map" resultType="com.sosikbot.entity.LaunchPool">

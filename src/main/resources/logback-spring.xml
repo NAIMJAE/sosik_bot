@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
 
-    <!-- 공통 패턴 설정 -->
     <property name="CONSOLE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-3level]) %logger{5} - %msg %n" />
-    <property name="FILE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%-3level] %logger{5} - %msg%n" />
+    <property name="FILE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%-5level] %logger{36} - %msg%n" />
+    <property name="LOG_FILE" value="logs/application.log" />
 
     <!-- Console appender 설정 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -12,51 +12,50 @@
         </encoder>
     </appender>
 
-    <!-- Error 로그 파일에 기록 -->
-    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/error.log</file>
+    <!-- File appender 설정 -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_FILE}</file>
+        <encoder>
+            <Pattern>${FILE_PATTERN}</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- RollingFile appender (파일 롤링 설정) -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- 하루 단위로 파일 분리 -->
-            <fileNamePattern>logs/error.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>7</maxHistory> <!-- 최대 7일치 로그 보관 -->
+            <!-- 날짜별로 로그 생성 -->
+            <fileNamePattern>logs/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 최대 보관 기간 10일 -->
+            <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
             <Pattern>${FILE_PATTERN}</Pattern>
         </encoder>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>ERROR</level> <!-- ERROR 이상의 로그만 기록 -->
-        </filter>
     </appender>
 
-    <!-- JDBC 관련 로그 설정 -->
-    <logger name="jdbc" level="OFF" additive="false">
-        <appender-ref ref="STDOUT" />
+    <logger name="jdbc" level="INFO" additive="false">
+        <appender-ref ref="STDOUT"/>
     </logger>
-    <logger name="jdbc.sqlonly" level="DEBUG" additive="false">
-        <appender-ref ref="STDOUT" />
+    <logger name="jdbc.sqlonly" level="INFO" additive="false" >
+        <appender-ref ref="STDOUT"/>
     </logger>
-    <logger name="jdbc.sqltiming" level="OFF" additive="false">
-        <appender-ref ref="STDOUT" />
+    <logger name="jdbc.sqltiming" level="INFO" additive="false" >
+        <appender-ref ref="STDOUT"/>
     </logger>
-    <logger name="org.hibernate.SQL" level="DEBUG" additive="false">
-        <appender-ref ref="STDOUT" />
-    </logger>
-
-    <!-- 애플리케이션의 특정 패키지별 로깅 설정 -->
-    <logger name="com.example.todolist.controller" level="DEBUG" additive="false">
-        <appender-ref ref="STDOUT" />
-    </logger>
-    <logger name="com.example.todolist.service" level="DEBUG" additive="false">
-        <appender-ref ref="STDOUT" />
-    </logger>
-    <logger name="com.example.todolist.domain" level="DEBUG" additive="false">
-        <appender-ref ref="STDOUT" />
+    <logger name="org.hibernate.SQL" level="INFO" additive="false">
+        <appender-ref ref="STDOUT"/>
     </logger>
 
-    <!-- 루트 로거 -->
+    <logger name="jdbc.sqlonly" level="info"/> 
+    <logger name="jdbc.sqltiming" level="info"/> 
+    <logger name="jdbc.resultsettable" level="info"/>
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.resultset" level="OFF"/>
+    <logger name="jdbc.connection" level="OFF"/>
+
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="ERROR_FILE" /> <!-- ERROR 로그는 파일에도 기록 -->
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING_FILE"/>
     </root>
-
 </configuration>

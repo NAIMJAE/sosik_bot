@@ -1,4 +1,4 @@
-package com.sosikbot.service;
+package com.sosikbot.service.Bybit;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.sosikbot.entity.Airdrop;
 import com.sosikbot.entity.LaunchPool;
 import com.sosikbot.entity.PoolDetail;
 import com.sosikbot.mapper.LaunchPoolMapper;
@@ -22,17 +21,15 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class BybitService {
     
-    private final CrawlingService crawlingService;
+    private final BybitCrawling crawlingService;
     private final LaunchPoolMapper launchPoolMapper;
     private final PoolDetailMapper poolDetailMapper;
 
-    //
+    // [Alarm] Crawling Bybit LaunchPool Event Alarm
     public String crawlingLaunchpool() {
 
-        // 최신순 3개 목록 조회해서 파라미터로 넘기기
         List<LaunchPool> launchPoolLast3 = launchPoolMapper.selectLaunchPoolLast3("Bybit");
 
-        // 이름이 일치하면 2중 for문 구동 x
         Map<LaunchPool, List<PoolDetail>> result = crawlingService.bybitLaunchpoolCrawl(launchPoolLast3);
 
         if (result.size() == 0) {
@@ -40,9 +37,8 @@ public class BybitService {
         }
 
         List<String> resultString = new ArrayList<>();
-        resultString.add("💰 Bybit New LaunchPool Event 💰\n");
+        resultString.add("💰 *Bybit 런치풀 이벤트 알림* 💰\n");
         
-        // DB 저장하기
         for (Map.Entry<LaunchPool, List<PoolDetail>> entry : result.entrySet()) {
             LaunchPool launchPool = entry.getKey();
             List<PoolDetail> poolDetails = entry.getValue();
@@ -52,6 +48,7 @@ public class BybitService {
             if (launchPoolResult == null) {
                 launchPoolMapper.insertLaunchPool(launchPool);
             }else {
+                resultString.clear();
                 continue;
             }
 
@@ -60,20 +57,20 @@ public class BybitService {
             }
             resultString.add(launchPoolToString(launchPool, poolDetails));
         }
-        return String.join("\n", resultString);
+        if (resultString.size() > 0) {
+            return String.join("\n", resultString);
+        }else {
+            return null;
+        }
     }
 
     // SELECT
     public String selectBybitLaunchPool() {
 
-        String dateTimeString = "2024-12-07 14:00";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime localDateTime = LocalDateTime.parse(dateTimeString, formatter);
-
         List<String> resultString = new ArrayList<>();
         resultString.add("💰 Bybit LaunchPool Event 💰\n");
 
-        List<LaunchPool> launchPoolList = launchPoolMapper.selectLaunchPoolInProgress("Bybit", localDateTime);
+        List<LaunchPool> launchPoolList = launchPoolMapper.selectLaunchPoolInProgress("Bybit", LocalDateTime.now());
 
         if (launchPoolList.size() > 0) {
             for (LaunchPool launchPool : launchPoolList) {
@@ -89,13 +86,13 @@ public class BybitService {
     // LaunchPool Event List ToString
     public String launchPoolToString(LaunchPool launchPool, List<PoolDetail> poolDetailList) {
         List<String> resultString = new ArrayList<>();
-        resultString.add("🎁 " + launchPool.getTitle() + " LaunchPool");
+        resultString.add("🎁 *" + launchPool.getTitle() + " LaunchPool*");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm");
         resultString.add("🍬 " + launchPool.getStartDate().format(formatter) + " ~ " + launchPool.getEndDate().format(formatter) + " (UTC)\n");
 
         for (PoolDetail item : poolDetailList) {
-            resultString.add("📌 " + item.getName());
+            resultString.add("📌 *" + item.getName() + "*");
             resultString.add("- Total Rewards : " + item.getTotal());
             resultString.add("- Min Staking : " + item.getMinimum());
             resultString.add("- Max Staking : " + item.getMaximum() + "\n");

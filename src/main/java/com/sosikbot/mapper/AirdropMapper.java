@@ -23,6 +23,21 @@ public interface AirdropMapper {
     // SELECT for Specific Airdrop
     Airdrop selectAirdropByTitle(@Param("exchange") String exchange, @Param("title") String title);
 
+    // SELECT Airdrop Evient Average Number Of Participants
+    Integer selectAirdropsAvgOfParticipants(@Param("exchange") String exchange);
+
+    // SELECT Airdrop Evient With Unpaid Reward List
+    List<Airdrop> selectAirdropWithUnpaidReward(@Param("exchange") String exchange);
+    
+    // SELECT Airdrop For Monthly Report
+    List<Airdrop> selectAirdropForMonthlyReport(@Param("exchange") String exchange, @Param("firstDay") String firstDay, @Param("lastDay") String lastDay);
+
+    // SELECT Airdrop For Register Reward
+    Airdrop selectAirdropByRegister(@Param("exchange") String exchange, @Param("coinName") String coinName, @Param("localDate") LocalDate localDate);
+
+    // INSERT Reward Of Airdrop
+    void updateRewardOfAirdrop(Airdrop airdrop);
+
     // UPDATE Airdrop Event
     void updateAirdrop(Airdrop airdrop);
 

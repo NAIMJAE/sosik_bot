@@ -2,9 +2,9 @@ package com.sosikbot.bot.handlers;
 
 import org.springframework.stereotype.Component;
 
-import com.sosikbot.service.BithumbService;
-import com.sosikbot.service.BybitService;
 import com.sosikbot.service.ChatUserService;
+import com.sosikbot.service.Bybit.BybitService;
+import com.sosikbot.service.bithumb.BithumbService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +30,24 @@ public class BotHandler {
 
         }else if(messageText.contains(Commands.bb_launchpool)) {
             return bybitService.selectBybitLaunchPool();
+
+        }else if(messageText.contains(Commands.bt_reward_date)) {
+            String testText = bithumbService.alarmEstimatedReward();
+            return testText;
+
+        }else if(messageText.contains(Commands.bt_reward_register)) {
+            String[] stArr = messageText.split(" ");
+            if (stArr.length != 2) {return null;}
+            
+            String[] dataArr = stArr[1].split("_");
+            if (dataArr.length != 3) {return null;}
+
+            String coinName = dataArr[0];
+            String rewardCoin = dataArr[1];
+            String rewardKRW = dataArr[2];
+
+            String testText = bithumbService.registerAirdropReward(coinName, rewardCoin, rewardKRW);
+            return testText;
 
         }else if(messageText.contains(Commands.richjo)) {
             return Message.richjoMsg;

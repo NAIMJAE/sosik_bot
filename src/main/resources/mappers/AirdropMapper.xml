@@ -6,8 +6,8 @@
 <mapper namespace="com.sosikbot.mapper.AirdropMapper">
 
         <insert id="insertAirdrop" parameterType="com.sosikbot.entity.Airdrop" useGeneratedKeys="true" keyProperty="no">
-                INSERT INTO airdrop (exchange, title, content, startDate, endDate)
-                VALUES (#{exchange}, #{title}, #{content}, #{startDate}, #{endDate})
+                INSERT INTO airdrop (coin, exchange, title, content, startDate, endDate, paymentDate, totalReward, rewardUnit, actualReward_coin, actualReward_krw, noticeURL)
+                VALUES (#{coin}, #{exchange}, #{title}, #{content}, #{startDate}, #{endDate}, #{paymentDate}, #{totalReward}, #{rewardUnit}, #{actualReward_coin}, #{actualReward_krw}, #{noticeURL})
         </insert>
 
         <select id="selectAirdropsByExchange" parameterType="map" resultType="com.sosikbot.entity.Airdrop">
@@ -31,6 +31,47 @@
                 WHERE exchange = #{exchange}
                 AND title = #{title}
         </select>
+
+        <select id="selectAirdropsAvgOfParticipants" parameterType="map" resultType="java.lang.Integer">
+                SELECT ROUND(AVG(totalReward / actualReward_coin), 0) AS 'EstimatedParticipants'
+                FROM(
+                        SELECT totalReward, actualReward_coin FROM airdrop
+                        WHERE exchange = #{exchange}
+                        AND actualReward_coin IS NOT NULL
+                        ORDER BY paymentDate DESC
+                        LIMIT 5
+                ) AS recent_data;
+        </select>
+
+        <select id="selectAirdropWithUnpaidReward" parameterType="map" resultType="com.sosikbot.entity.Airdrop">
+                SELECT * FROM airdrop
+                WHERE exchange = #{exchange}
+                AND actualReward_coin IS NULL
+                ORDER BY paymentDate ASC
+        </select>
+
+        <select id="selectAirdropForMonthlyReport" parameterType="map" resultType="com.sosikbot.entity.Airdrop">
+                SELECT * FROM airdrop
+                WHERE exchange = #{exchange}
+                AND paymentDate BETWEEN #{firstDay} AND #{lastDay}
+                AND actualReward_coin IS NOT NULL
+                ORDER BY paymentDate ASC;
+        </select>
+
+        <select id="selectAirdropByRegister" parameterType="map" resultType="com.sosikbot.entity.Airdrop">
+                SELECT * FROM airdrop
+                WHERE exchange = #{exchange}
+                AND coin = #{coinName}
+                AND paymentDate >= #{localDate};
+        </select>
+
+        <update id="updateRewardOfAirdrop" parameterType="com.sosikbot.entity.Airdrop">
+                UPDATE airdrop
+                SET 
+                actualReward_coin = #{actualReward_coin},
+                actualReward_krw = #{actualReward_krw}
+                WHERE no = #{no};
+        </update>
 
         <update id="updateAirdrop" parameterType="com.sosikbot.entity.Airdrop">
                 UPDATE airdrop
