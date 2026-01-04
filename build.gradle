@@ -1,0 +1,62 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.11'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.nemojin'
+version = '1.1.6-RELEASE' // 호환 변경. 기능 변경. 버그 수정
+processResources {
+	filesMatching("**/application.yml") {
+		expand(project.properties)
+	}
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
+
+	// Telegram
+	implementation 'org.telegram:telegrambots-spring-boot-starter:6.1.0'
+
+	// crawling
+	implementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
+	implementation 'org.seleniumhq.selenium:selenium-devtools-v131:4.27.0'
+
+	// Bithumb API
+	implementation 'com.auth0:java-jwt:4.4.0'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+
+	// jackson
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

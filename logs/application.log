@@ -1,0 +1,48 @@
+2025-07-31 21:28:41.023 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - Start
+2025-07-31 21:28:42.283 [scheduling-1] [ERROR] CustomLogger - Error creating bean with name 'getDriver' defined in class path resource [com/nemojin/sosikbot/config/WebDriverConfig.class]: Failed to instantiate [org.openqa.selenium.WebDriver]: Factory method 'getDriver' threw exception with message: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 136
+Current browser version is 138.0.7204.169 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe 
+Host info: host: 'DESKTOP-P3BNNIQ', ip: '192.168.219.102'
+Build info: version: '4.19.1', revision: 'abe0ee07dc'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless, --window-size=1920,1080, --disable-gpu, --no-sandbox, --disable-dev-shm-usage, --disable-blink-features=Au..., --disable-extensions, --disable-popup-blocking, user-agent=Mozilla/5.0 (Win...], excludeSwitches: [enable-automation], extensions: [], useAutomationExtension: false}}]}]
+2025-07-31 21:28:43.428 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - End
+2025-07-31 21:29:43.442 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - Start
+2025-07-31 21:29:44.318 [scheduling-1] [ERROR] CustomLogger - Error creating bean with name 'getDriver' defined in class path resource [com/nemojin/sosikbot/config/WebDriverConfig.class]: Failed to instantiate [org.openqa.selenium.WebDriver]: Factory method 'getDriver' threw exception with message: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 136
+Current browser version is 138.0.7204.169 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe 
+Host info: host: 'DESKTOP-P3BNNIQ', ip: '192.168.219.102'
+Build info: version: '4.19.1', revision: 'abe0ee07dc'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--headless, --window-size=1920,1080, --disable-gpu, --no-sandbox, --disable-dev-shm-usage, --disable-blink-features=Au..., --disable-extensions, --disable-popup-blocking, user-agent=Mozilla/5.0 (Win...], excludeSwitches: [enable-automation], extensions: [], useAutomationExtension: false}}]}]
+2025-07-31 21:29:44.860 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - End
+2025-07-31 21:32:36.483 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - Start
+2025-07-31 21:32:37.548 [scheduling-1] [WARN ] o.o.s.devtools.CdpVersionFinder - Unable to find CDP implementation matching 138
+2025-07-31 21:32:37.549 [scheduling-1] [WARN ] o.o.selenium.chromium.ChromiumDriver - Unable to find version of CDP to use for 138.0.7204.169. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-07-31 21:32:39.344 [scheduling-1] [INFO ] CustomLogger - 공지사항 개수 : 30
+2025-07-31 21:32:40.974 [scheduling-1] [WARN ] o.o.s.devtools.CdpVersionFinder - Unable to find CDP implementation matching 138
+2025-07-31 21:32:40.974 [scheduling-1] [WARN ] o.o.selenium.chromium.ChromiumDriver - Unable to find version of CDP to use for 138.0.7204.169. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-07-31 21:32:42.795 [scheduling-1] [INFO ] CustomLogger - Http Image saved : D:\dUser\imjae\d_workspace\sosikbot\img\[ 하이퍼레인(HYPER) 순입금 에어드랍 이벤트][2025-07-31].png
+2025-07-31 21:32:42.796 [scheduling-1] [INFO ] CustomLogger - SUCCESS CRAWLING :: [ 하이퍼레인(HYPER) 순입금 에어드랍 이벤트]
+2025-07-31 21:32:44.700 [scheduling-1] [ERROR] CustomLogger - [MESSAGE ERROR] SEND MESSAGE FAIL
+com.nemojin.sosikbot.bot.message.MessageDispatcher :: 141
+2025-07-31 21:32:45.191 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - End
+2025-07-31 21:35:44.649 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - Start
+2025-07-31 21:35:45.618 [scheduling-1] [WARN ] o.o.s.devtools.CdpVersionFinder - Unable to find CDP implementation matching 138
+2025-07-31 21:35:45.619 [scheduling-1] [WARN ] o.o.selenium.chromium.ChromiumDriver - Unable to find version of CDP to use for 138.0.7204.169. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-07-31 21:35:47.135 [scheduling-1] [INFO ] CustomLogger - 공지사항 개수 : 30
+2025-07-31 21:35:48.841 [scheduling-1] [WARN ] o.o.s.devtools.CdpVersionFinder - Unable to find CDP implementation matching 138
+2025-07-31 21:35:48.841 [scheduling-1] [WARN ] o.o.selenium.chromium.ChromiumDriver - Unable to find version of CDP to use for 138.0.7204.169. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-07-31 21:35:50.763 [scheduling-1] [INFO ] CustomLogger - Http Image saved : D:\dUser\imjae\d_workspace\sosikbot\img\[ 하이퍼레인(HYPER) 순입금 에어드랍 이벤트][2025-07-31].png
+2025-07-31 21:35:50.764 [scheduling-1] [INFO ] CustomLogger - SUCCESS CRAWLING :: [ 하이퍼레인(HYPER) 순입금 에어드랍 이벤트]
+2025-07-31 21:35:52.837 [scheduling-1] [ERROR] CustomLogger - [MESSAGE ERROR] SEND MESSAGE FAIL
+com.nemojin.sosikbot.bot.message.MessageDispatcher :: 141
+2025-07-31 21:35:53.343 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - End
+2025-07-31 21:39:05.831 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - Start
+2025-07-31 21:39:06.780 [scheduling-1] [WARN ] o.o.s.devtools.CdpVersionFinder - Unable to find CDP implementation matching 138
+2025-07-31 21:39:06.781 [scheduling-1] [WARN ] o.o.selenium.chromium.ChromiumDriver - Unable to find version of CDP to use for 138.0.7204.169. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-07-31 21:39:08.996 [scheduling-1] [INFO ] CustomLogger - 공지사항 개수 : 30
+2025-07-31 21:39:10.568 [scheduling-1] [WARN ] o.o.s.devtools.CdpVersionFinder - Unable to find CDP implementation matching 138
+2025-07-31 21:39:10.568 [scheduling-1] [WARN ] o.o.selenium.chromium.ChromiumDriver - Unable to find version of CDP to use for 138.0.7204.169. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2025-07-31 21:39:12.053 [scheduling-1] [ERROR] CustomLogger - Index 0 out of bounds for length 0
+2025-07-31 21:39:13.262 [scheduling-1] [INFO ] CustomLogger - Airdrop Event Scheduled - End

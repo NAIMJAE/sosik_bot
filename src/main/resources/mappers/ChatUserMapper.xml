@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nemojin.sosikbot.mapper.ChatUserMapper">
+
+    <select id="selectChatUserList" resultType="com.nemojin.sosikbot.model.ChatUser">
+        SELECT * FROM chatuser
+    </select>
+
+    <select id="selectChatUser" resultType="com.nemojin.sosikbot.model.ChatUser">
+        SELECT * FROM chatuser
+        WHERE chatId = #{chatId}
+    </select>
+
+    <insert id="insertChatUser" parameterType="com.nemojin.sosikbot.model.ChatUser">
+        INSERT INTO chatuser (chatId, chatDate)
+        VALUES (#{chatId}, #{chatDate})
+    </insert>
+</mapper>

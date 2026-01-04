@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nemojin.sosikbot.mapper.AirdropMapper">
+
+    <insert id="insertNewAirdropEvent" parameterType="com.nemojin.sosikbot.model.Airdrop" useGeneratedKeys="true" keyProperty="no">
+        INSERT INTO airdrop (
+            coin, exchange, date, type, consecutive,
+            startDate, endDate, paymentDate,
+            totalReward, rewardUnit,
+            actualReward_coin, actualReward_krw,
+            title, content, noticeURL
+        )
+        VALUES (
+            #{coin}, #{exchange}, #{date}, #{type}, #{consecutive},
+            #{startDate}, #{endDate}, #{paymentDate},
+            #{totalReward}, #{rewardUnit},
+            #{actualReward_coin}, #{actualReward_krw},
+            #{title}, #{content}, #{noticeURL}
+        )
+    </insert>
+
+    <select id="selectAirdropForDuplicateCheck" parameterType="map" resultType="java.lang.String">
+        SELECT noticeUrl FROM airdrop
+        WHERE exchange = #{exchange}
+        AND noticeUrl = #{noticeUrl}
+        AND date = #{date}
+    </select>
+
+    <select id="selectAirdropByPaymentDate" parameterType="map" resultType="com.nemojin.sosikbot.model.Airdrop">
+        SELECT no, coin, exchange, type, paymentDate, rewardUnit FROM airdrop
+        WHERE paymentDate = #{paymentDate}
+        AND actualReward_coin IS NULL
+        AND actualReward_krw IS NULL
+    </select>
+
+    <update id="updateActualRewardById" parameterType="map">
+        UPDATE airdrop
+        SET actualReward_coin = #{coin}, actualReward_krw = #{krw}
+        WHERE no = #{no}
+    </update>
+
+</mapper>

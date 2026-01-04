@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nemojin.sosikbot.mapper.LaunchPoolMapper">
+
+    <insert id="insertNewLaunchPoolEvent" parameterType="com.nemojin.sosikbot.model.LaunchPool">
+        INSERT INTO launchpool (launchNo, exchange, title, status, startDate, endDate)
+        VALUES (#{launchNo}, #{exchange}, #{title}, #{status}, #{startDate}, #{endDate})
+    </insert>
+
+    <insert id="insertNewLaunchPoolDetail" parameterType="com.nemojin.sosikbot.model.PoolDetail" useGeneratedKeys="true" keyProperty="poolNo">
+        INSERT INTO pooldetail (launchNo, name, total, minimum, maximum)
+        VALUES (#{launchNo}, #{name}, #{total}, #{minimum}, #{maximum})
+    </insert>
+
+    <select id="selectLaunchPoolLast3" parameterType="map" resultType="com.nemojin.sosikbot.model.LaunchPool">
+        SELECT launchNo, title, startDate
+        FROM launchpool
+        WHERE exchange = #{exchange}
+        ORDER BY startDate DESC
+        LIMIT 3
+    </select>
+
+</mapper>

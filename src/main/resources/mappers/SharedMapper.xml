@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nemojin.sosikbot.mapper.SharedMapper">
+
+    <select id="selectAirdropsByExchange" parameterType="map" resultType="com.nemojin.sosikbot.model.Airdrop">
+        SELECT * FROM airdrop
+        WHERE #{now} BETWEEN startDate AND endDate
+        ORDER BY exchange
+    </select>
+
+    <select id="selectLaunchPoolsByExchange" parameterType="map" resultType="com.nemojin.sosikbot.model.LaunchPool">
+        SELECT * FROM launchpool
+        WHERE #{now} BETWEEN startDate AND endDate
+        ORDER BY exchange
+    </select>
+
+    <select id="selectAirdropsAvgOfParticipants" resultType="com.nemojin.sosikbot.model.Participant" >
+        WITH numbered AS (
+            SELECT exchange, totalReward, actualReward_coin,
+            ROW_NUMBER() OVER (PARTITION BY exchange ORDER BY paymentDate DESC) AS num
+            FROM airdrop
+            WHERE actualReward_coin IS NOT NULL
+            AND type IN ("Market", "Coupon")
+        )
+        SELECT exchange, ROUND(AVG(totalReward / actualReward_coin), 0) AS average
+        FROM numbered
+        WHERE num &lt;= 5
+        GROUP BY exchange
+    </select>
+
+    <select id="selectRecentAvgOfParticipants" resultType="com.nemojin.sosikbot.model.Participant">
+        SELECT exchange, paymentDate,
+        ROUND((totalReward / actualReward_coin), 0) AS average
+        FROM airdrop
+        WHERE actualReward_coin IS NOT NULL
+        AND type = "Market"
+        AND paymentDate &gt;= #{date}
+        ORDER BY exchange, paymentDate DESC
+    </select>
+
+    <select id="selectMonthAvgOfParticipants" resultType="com.nemojin.sosikbot.model.Participant">
+        SELECT exchange, coin, paymentDate, ROUND(totalReward/actualReward_coin) AS average FROM airdrop
+        WHERE actualReward_coin IS NOT NULL
+        AND paymentDate BETWEEN #{firstDay} AND #{lastDay}
+        ORDER BY EXCHANGE, paymentDate ASC
+    </select>
+
+    <select id="selectUnpaidAirdrops" resultType="com.nemojin.sosikbot.model.Airdrop">
+        SELECT exchange, title, type, paymentDate, totalReward, rewardUnit FROM airdrop
+        WHERE actualReward_coin IS NULL
+        ORDER BY paymentDate ASC
+    </select>
+
+    <select id="selectAirdropsForMonthlyReport" parameterType="map" resultType="com.nemojin.sosikbot.model.Airdrop">
+        SELECT exchange, coin, paymentDate, actualReward_coin, actualReward_krw FROM airdrop
+        WHERE paymentDate BETWEEN #{firstDay} AND #{lastDay}
+        AND actualReward_coin IS NOT NULL
+        AND type IN ("Market", "Coupon")
+        ORDER BY exchange, paymentDate ASC;
+    </select>
+
+</mapper>
